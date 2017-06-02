@@ -5,8 +5,7 @@ using Windows.Kinect;
 using Kinect = Windows.Kinect;
 public class coordinateMap : MonoBehaviour
 {
-    private BodySourceManager bodyManager;
-    public GameObject BodySourceManager;
+    //Dictionary not needed right now but will be useful later
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
     {
         { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
@@ -39,18 +38,19 @@ public class coordinateMap : MonoBehaviour
         { Kinect.JointType.Neck, Kinect.JointType.Head },
     };
 
-    /* Use this for initialization
-    void Start()
-    {
+    //Import BodySourceManager class 
+    private BodySourceManager bodyManager;
 
-
-
-    }*/
-
-    // Update is called once per frame
+    //Fields 
     GameObject jointObj;
     Vector3 position;
     KinectSensor sensor;
+    Body[] data;
+
+
+    public GameObject BodySourceManager; 
+
+    // Use this for initialization, only called once at the start
     void Start()
     {
         BodySourceManager = GameObject.Find("BodyManager");
@@ -58,8 +58,10 @@ public class coordinateMap : MonoBehaviour
         jointObj.transform.localScale = new Vector3(100,100,100);
         sensor = KinectSensor.GetDefault();
     }
+    // Update is called once per frame
     void Update()
     {
+        //Make sure that the BodySourceManager exists in the game before we use it
         if (BodySourceManager == null)
         {
             print("bodyManagerNotFound");
@@ -71,13 +73,13 @@ public class coordinateMap : MonoBehaviour
         {
             return;
         }
-        Body[] data = bodyManager.GetData();
+        //If the body data is null, stop
+        data = bodyManager.GetData();
         if (data == null)
         {
             print("Body Data is Null");
             return;
         }
-        List<ulong> trackedIds = new List<ulong>();
         //For each body that exists
         foreach (var body in data)
         {
@@ -87,60 +89,36 @@ public class coordinateMap : MonoBehaviour
                 //Stop here and iterate the loop again
                 continue;
             }
-
-            if (body.IsTracked)
-            {
-                trackedIds.Add(body.TrackingId);
-            }
         }
+        //Iterate over each body in our array
         foreach (var body in data)
         {
+            //If the body exists...
             if (body != null)
             {
+                //If the body is currently being tracked by Kinect...
                 if (body.IsTracked) //Important, used to see if this particular body instance is being tracked by the kinect at this time
                 {
+                    //Loop over the joints
                     for (Kinect.JointType jt = Kinect.JointType.SpineBase; jt <= Kinect.JointType.ThumbRight; jt++)
                     {
+                        //If the joint is Head...
                         if (jt.ToString() == "Head")
                         {
-
-
-
+                            //Reference the specific joint, not the Joint Type
                             Kinect.Joint sourceJoint = body.Joints[jt];
-
+                            //3D point in space (x,y,z), real world coordinates (in meters)
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
+                            //Mapped point to 2D screen from 3D coordinates
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
-                            //DepthSpacePoint depthPoint = sensor.CoordinateMapper.MapCameraPointToDepthSpace(cameraPoint);
-                            
-                            //CameraSpacePoint headPoint = sourceJoint.Position;
-                            //ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(headPoint);
-
-                            //position = GetVector3FromJoint(sourceJoint);
-
-                            //print(headPoint.X + "," + headPoint.Y);
-                            //print(colorPoint.X + "," + colorPoint.Y);
-                            //jointObj.transform.localPosition = position;
-                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0);
-
-                            //Vector3 position = new Vector3(cameraPoint.X, cameraPoint.Y, 0/*cameraPoint.Z*/);
-                            
-                            //Vector3 position = new Vector3(depthPoint.X, depthPoint.Y, 0);
-                            //Vector3 point = new Vector3(position.x, position.y, 0);
+                            Vector3 position = new Vector3(colorPoint.X , colorPoint.Y, 0);
                             jointObj.transform.position = position;
-                           
-                            //print("found head");//jointObj = GameObject.Find("tophat");
-
                             print(position.x + "," + position.y + "," + position.z);
-                            //print("transforming");
-
                         }
-
                     }
                 }
             }
         }
-
-
 
     }
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
@@ -149,10 +127,4 @@ public class coordinateMap : MonoBehaviour
         Vector3 position = new Vector3(joint.Position.X * factor, joint.Position.Y * factor, /*joint.Position.Z*factor*/0);
         return position;
     }
-    private static Kinect.Joint scaleJointPosition(Kinect.Joint joint, Kinect.Joint joint2) {
-        float factor = 400;
-        Vector3 position = new Vector3(joint.Position.X*factor, joint.Position.Y*factor, /*joint.Position.Z*factor*/0);
-
-        return joint;
-}
 }
