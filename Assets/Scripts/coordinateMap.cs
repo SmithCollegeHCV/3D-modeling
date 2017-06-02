@@ -55,7 +55,7 @@ public class coordinateMap : MonoBehaviour
     {
         BodySourceManager = GameObject.Find("BodyManager");
         jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        jointObj.transform.localScale = new Vector3((float)0.01, (float)0.01, (float)0.01);
+        jointObj.transform.localScale = new Vector3(100,100,100);
         sensor = KinectSensor.GetDefault();
     }
     void Update()
@@ -110,7 +110,8 @@ public class coordinateMap : MonoBehaviour
 
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
-                            DepthSpacePoint depthPoint = sensor.CoordinateMapper.MapCameraPointToDepthSpace(cameraPoint);
+                            //DepthSpacePoint depthPoint = sensor.CoordinateMapper.MapCameraPointToDepthSpace(cameraPoint);
+                            
                             //CameraSpacePoint headPoint = sourceJoint.Position;
                             //ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(headPoint);
 
@@ -119,10 +120,14 @@ public class coordinateMap : MonoBehaviour
                             //print(headPoint.X + "," + headPoint.Y);
                             //print(colorPoint.X + "," + colorPoint.Y);
                             //jointObj.transform.localPosition = position;
-                            Vector3 position = new Vector3(cameraPoint.X , cameraPoint.Y, 0);
-                            //Vector3 position = new Vector3(depthPoint.X, depthPoint.Y, 0);
-                            jointObj.transform.position = position;
+                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0);
 
+                            //Vector3 position = new Vector3(cameraPoint.X, cameraPoint.Y, 0/*cameraPoint.Z*/);
+                            
+                            //Vector3 position = new Vector3(depthPoint.X, depthPoint.Y, 0);
+                            //Vector3 point = new Vector3(position.x, position.y, 0);
+                            jointObj.transform.position = position;
+                           
                             //print("found head");//jointObj = GameObject.Find("tophat");
 
                             print(position.x + "," + position.y + "," + position.z);
@@ -140,10 +145,13 @@ public class coordinateMap : MonoBehaviour
     }
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
-        return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
+        float factor = 10000;
+        Vector3 position = new Vector3(joint.Position.X * factor, joint.Position.Y * factor, /*joint.Position.Z*factor*/0);
+        return position;
     }
     private static Kinect.Joint scaleJointPosition(Kinect.Joint joint, Kinect.Joint joint2) {
-        Vector3 position = new Vector3(joint.Position.X, joint.Position.Y, joint.Position.Z);
+        float factor = 400;
+        Vector3 position = new Vector3(joint.Position.X*factor, joint.Position.Y*factor, /*joint.Position.Z*factor*/0);
 
         return joint;
 }

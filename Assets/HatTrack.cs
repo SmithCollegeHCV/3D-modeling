@@ -12,11 +12,11 @@ public class HatTrack : MonoBehaviour {
     // Update is called once per frame
     GameObject head; 
 	void Update () {
-        GameObject Head = GameObject.Find("Head");
+        GameObject Head = GameObject.Find("Sphere");
 
         if (Head)
         {
-            gameObject.transform.position = Head.transform.position +Vector3.up*2;
+            gameObject.transform.position = Head.transform.position +Vector3.up*20;
         }
 	}
 }
