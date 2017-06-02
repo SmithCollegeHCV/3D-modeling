@@ -8,4 +8,13 @@ UnityPractice.Editor.Plugins.csproj
 UnityPractice.Plugins.csproj
 UnityPractice.sln
 UnityPractice.userprefs
-
+.vs/
+3D-Models.CSharp.Editor.Plugins.csproj
+3D-Models.CSharp.Plugins.csproj
+3D-Models.CSharp.csproj
+3D-Models.sln
+Library/ShaderCache/0/01e4297cc79d14b35c35f80654398eb3.bin
+Library/ShaderCache/f/f1d184bb6ac164b333a288bac0de3a33.bin
+ProjectSettings/
+Temp/
+UnityPractice.CSharp.csproj
