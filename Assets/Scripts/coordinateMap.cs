@@ -111,7 +111,7 @@ public class coordinateMap : MonoBehaviour
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
                             //Mapped point to 2D screen from 3D coordinates
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
-                            Vector3 position = new Vector3(colorPoint.X , colorPoint.Y, 0);
+                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0);
                             jointObj.transform.position = position;
                             print(position.x + "," + position.y + "," + position.z);
                         }
