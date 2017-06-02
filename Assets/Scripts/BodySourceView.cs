@@ -105,7 +105,7 @@ public class BodySourceView : MonoBehaviour
                 RefreshBodyObject(body, _Bodies[body.TrackingId]);
             }
         }
-    }
+    }//End up update loop
     
     private GameObject CreateBodyObject(ulong id)
     {
