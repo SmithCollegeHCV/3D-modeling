@@ -55,6 +55,7 @@ public class coordinateMap : MonoBehaviour
     {
         BodySourceManager = GameObject.Find("BodyManager");
         jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        jointObj.GetComponent<MeshRenderer>().enabled = false;
         jointObj.transform.localScale = new Vector3(100,100,100);
         sensor = KinectSensor.GetDefault();
     }
@@ -111,9 +112,14 @@ public class coordinateMap : MonoBehaviour
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
                             //Mapped point to 2D screen from 3D coordinates
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
-                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0);
+                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0/*GetVector3FromJoint(sourceJoint).z*10*/);
                             jointObj.transform.position = position;
+                            
+                            float zDistance = GetVector3FromJoint(sourceJoint).z*43;
+                            float scale = 100;
+                            GameObject.Find("tophat").transform.localScale = new Vector3(scale - zDistance, scale - zDistance, scale - zDistance);
                             print(position.x + "," + position.y + "," + position.z);
+
                         }
                     }
                 }
@@ -124,7 +130,7 @@ public class coordinateMap : MonoBehaviour
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {
         float factor = 10000;
-        Vector3 position = new Vector3(joint.Position.X * factor, joint.Position.Y * factor, /*joint.Position.Z*factor*/0);
+        Vector3 position = new Vector3(joint.Position.X * factor, joint.Position.Y * factor, joint.Position.Z);
         return position;
     }
 }
