@@ -3,7 +3,7 @@ using System.Collections;
 using Windows.Kinect;//一定要引用这个
 using Microsoft.Kinect.Face;//还有这个
 
-public class FaceTrack : MonoBehaviour
+public class FaceTrackCustom : MonoBehaviour
 {
     private KinectSensor kinectSensor;
     private int bodyCount;
@@ -44,7 +44,7 @@ public class FaceTrack : MonoBehaviour
         // create a face frame source + reader to track each face in the FOV
         faceFrameSources = new FaceFrameSource[bodyCount];
         faceFrameReaders = new FaceFrameReader[bodyCount];
-        
+
         for (int i = 0; i < bodyCount; i++)
         {
             // create the face frame source with the required face frame features and an initial tracking Id of 0
@@ -91,7 +91,9 @@ public class FaceTrack : MonoBehaviour
                                 var result = frame.FaceFrameResult;
                                 if (result.FaceRotationQuaternion != null)
                                 {
-                                    Debug.Log(result.FaceRotationQuaternion.X);
+                                    var rot = result.FaceRotationQuaternion;
+                                    Quaternion rotation = new Quaternion(rot.X, rot.Y, rot.Z,rot.W);
+                                    GameObject.Find("tophat").transform.rotation = rotation;
                                 }
                                 if (result.FaceProperties != null)
                                 {
@@ -115,10 +117,9 @@ public class FaceTrack : MonoBehaviour
                                             if (item.Value == DetectionResult.Yes)
                                             {
                                                 Debug.Log(item.Value);
-                                                Debug.Log("Got here");
                                             }
                                         }
-                                        
+
 
                                     }
                                 }
