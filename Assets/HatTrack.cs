@@ -16,7 +16,7 @@ public class HatTrack : MonoBehaviour {
 
         if (Head)
         {
-            gameObject.transform.position = Head.transform.position +Vector3.up*20;
+            gameObject.transform.position = Head.transform.position +Vector3.up*(float)2.5;
         }
 	}
 }

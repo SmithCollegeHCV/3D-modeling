@@ -1,0 +1,18 @@
+
+------------------------------
+Project Ideas
+------------------------------
+Port Tetris to JS, stylize with CSS
+Complete and flesh out D3 Basketball Visualization, expand to all players with GUI
+	Create the ability to add a link to any season
+
+
+
+
+
+----------------------------------
+Existing Projects
+----------------------------------
+Youtube Importer
+Swarm
+C++ Box2D OpenGL Gravity Simulator

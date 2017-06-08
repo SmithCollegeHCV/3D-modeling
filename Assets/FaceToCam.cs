@@ -15,8 +15,8 @@ public class FaceToCam : MonoBehaviour
     public GameObject bodyManager;
 
     //this is our game camera
-    public GameObject face = GameObject.Find("Cube");
-    
+    public GameObject face;
+
     StreamWriter sx;
     StreamWriter sy;
     StreamWriter kx;
@@ -54,10 +54,10 @@ public class FaceToCam : MonoBehaviour
         kalman_X = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
         kalman_Y = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
         kalman_mod = new KalmanFilterSimple1D(f: 1, h: 1, q: qq, r: rr);
-
+        bodyManager = GameObject.Find("BodyManager");
         sx = new StreamWriter("coords_X.txt");
         kx = new StreamWriter("coords_KX.txt");
-        print("cube");
+        face = GameObject.Find("face");
 
         // one sensor is currently supported
         kinectSensor = KinectSensor.GetDefault();

@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: a2b356f417476fa4faab28175898bafb
+timeCreated: 1496676844
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: obja_fuku_04_01
+    100004: obja_fuku_04_02
+    100006: obja_fuku_04_03
+    100008: obja_fuku_04_04
+    100010: obja_fuku_04_05
+    100012: obja_fuku_04_06
+    100014: obja_fuku_04_07
+    100016: obja_fuku_04_08
+    100018: obja_fuku_04_09
+    100020: obja_fuku_04_10
+    100022: obja_fuku_04_11
+    100024: obja_fuku_04_12
+    100026: obja_fuku_04_13
+    100028: obja_fuku_04_14
+    100030: obja_fuku_04_15
+    100032: obja_fuku_04_16
+    400000: //RootNode
+    400002: obja_fuku_04_01
+    400004: obja_fuku_04_02
+    400006: obja_fuku_04_03
+    400008: obja_fuku_04_04
+    400010: obja_fuku_04_05
+    400012: obja_fuku_04_06
+    400014: obja_fuku_04_07
+    400016: obja_fuku_04_08
+    400018: obja_fuku_04_09
+    400020: obja_fuku_04_10
+    400022: obja_fuku_04_11
+    400024: obja_fuku_04_12
+    400026: obja_fuku_04_13
+    400028: obja_fuku_04_14
+    400030: obja_fuku_04_15
+    400032: obja_fuku_04_16
+    2300000: obja_fuku_04_01
+    2300002: obja_fuku_04_02
+    2300004: obja_fuku_04_03
+    2300006: obja_fuku_04_04
+    2300008: obja_fuku_04_05
+    2300010: obja_fuku_04_06
+    2300012: obja_fuku_04_07
+    2300014: obja_fuku_04_08
+    2300016: obja_fuku_04_09
+    2300018: obja_fuku_04_10
+    2300020: obja_fuku_04_11
+    2300022: obja_fuku_04_12
+    2300024: obja_fuku_04_13
+    2300026: obja_fuku_04_14
+    2300028: obja_fuku_04_15
+    2300030: obja_fuku_04_16
+    3300000: obja_fuku_04_01
+    3300002: obja_fuku_04_02
+    3300004: obja_fuku_04_03
+    3300006: obja_fuku_04_04
+    3300008: obja_fuku_04_05
+    3300010: obja_fuku_04_06
+    3300012: obja_fuku_04_07
+    3300014: obja_fuku_04_08
+    3300016: obja_fuku_04_09
+    3300018: obja_fuku_04_10
+    3300020: obja_fuku_04_11
+    3300022: obja_fuku_04_12
+    3300024: obja_fuku_04_13
+    3300026: obja_fuku_04_14
+    3300028: obja_fuku_04_15
+    3300030: obja_fuku_04_16
+    4300000: obja_fuku_04_01
+    4300002: obja_fuku_04_02
+    4300004: obja_fuku_04_03
+    4300006: obja_fuku_04_04
+    4300008: obja_fuku_04_05
+    4300010: obja_fuku_04_06
+    4300012: obja_fuku_04_07
+    4300014: obja_fuku_04_08
+    4300016: obja_fuku_04_09
+    4300018: obja_fuku_04_10
+    4300020: obja_fuku_04_11
+    4300022: obja_fuku_04_12
+    4300024: obja_fuku_04_13
+    4300026: obja_fuku_04_14
+    4300028: obja_fuku_04_15
+    4300030: obja_fuku_04_16
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

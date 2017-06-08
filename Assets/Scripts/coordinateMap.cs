@@ -43,6 +43,7 @@ public class coordinateMap : MonoBehaviour
 
     //Fields 
     GameObject jointObj;
+    GameObject torso;
     Vector3 position;
     KinectSensor sensor;
     Body[] data;
@@ -55,8 +56,10 @@ public class coordinateMap : MonoBehaviour
     {
         BodySourceManager = GameObject.Find("BodyManager");
         jointObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        torso = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        torso.transform.localScale = new Vector3(12, 12, 12);
         jointObj.GetComponent<MeshRenderer>().enabled = false;
-        jointObj.transform.localScale = new Vector3(100,100,100);
+        jointObj.transform.localScale = new Vector3(25,25,25);
         sensor = KinectSensor.GetDefault();
     }
     // Update is called once per frame
@@ -112,14 +115,28 @@ public class coordinateMap : MonoBehaviour
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
                             //Mapped point to 2D screen from 3D coordinates
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
-                            Vector3 position = new Vector3(colorPoint.X , -colorPoint.Y, 0/*GetVector3FromJoint(sourceJoint).z*10*/);
+                            Vector3 position = new Vector3(colorPoint.X / 8, -colorPoint.Y / 8, 0/*GetVector3FromJoint(sourceJoint).z*10*/);
                             jointObj.transform.position = position;
-                            
-                            float zDistance = GetVector3FromJoint(sourceJoint).z*43;
-                            float scale = 100;
+
+                            float zDistance = GetVector3FromJoint(sourceJoint).z * (float)5.5;
+                            float scale = (float)12.5;
                             GameObject.Find("tophat").transform.localScale = new Vector3(scale - zDistance, scale - zDistance, scale - zDistance);
                             print(position.x + "," + position.y + "," + position.z);
-
+                        }
+                        if (jt.ToString() == "SpineBase")
+                        {
+                            Kinect.Joint sourceJoint = body.Joints[jt];
+                            CameraSpacePoint cameraPoint = sourceJoint.Position;
+                            ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
+                            Vector3 position = new Vector3(colorPoint.X / 8, -colorPoint.Y / 8, -10/*GetVector3FromJoint(sourceJoint).z*10*/);
+                            GameObject dress = GameObject.Find("dress");
+                            dress.transform.position = position + Vector3.down*100;
+                            Quaternion rotation = new Quaternion(body.JointOrientations[jt].Orientation.X, body.JointOrientations[jt].Orientation.Y, /*body.JointOrientations[jt].Orientation.Z*/0, body.JointOrientations[jt].Orientation.W);
+                            dress.transform.rotation = rotation;
+                            torso.transform.position = position;
+                            float zDistance = GetVector3FromJoint(sourceJoint).z * (float)5.5;
+                            float scale = (float)22;
+                            dress.transform.localScale = new Vector3(scale - zDistance, scale - zDistance, scale - zDistance);
                         }
                     }
                 }

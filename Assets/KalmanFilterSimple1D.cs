@@ -1,4 +1,5 @@
-﻿class KalmanFilterSimple1D
+﻿//http://habrahabr.ru/post/140274/
+class KalmanFilterSimple1D
 {
     public double X0 { get; private set; } // predicted state
     public double P0 { get; private set; } // predicted covariance
