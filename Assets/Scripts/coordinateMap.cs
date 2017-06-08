@@ -129,14 +129,14 @@ public class coordinateMap : MonoBehaviour
                             CameraSpacePoint cameraPoint = sourceJoint.Position;
                             ColorSpacePoint colorPoint = sensor.CoordinateMapper.MapCameraPointToColorSpace(cameraPoint);
                             Vector3 position = new Vector3(colorPoint.X / 8, -colorPoint.Y / 8, -10/*GetVector3FromJoint(sourceJoint).z*10*/);
-                            GameObject dress = GameObject.Find("dress");
-                            dress.transform.position = position + Vector3.down*100;
-                            Quaternion rotation = new Quaternion(body.JointOrientations[jt].Orientation.X, body.JointOrientations[jt].Orientation.Y, /*body.JointOrientations[jt].Orientation.Z*/0, body.JointOrientations[jt].Orientation.W);
-                            dress.transform.rotation = rotation;
-                            torso.transform.position = position;
-                            float zDistance = GetVector3FromJoint(sourceJoint).z * (float)5.5;
-                            float scale = (float)22;
-                            dress.transform.localScale = new Vector3(scale - zDistance, scale - zDistance, scale - zDistance);
+                            //GameObject dress = GameObject.Find("dress");
+                            //dress.transform.position = position + Vector3.down*100;
+                            //Quaternion rotation = new Quaternion(body.JointOrientations[jt].Orientation.X, body.JointOrientations[jt].Orientation.Y, /*body.JointOrientations[jt].Orientation.Z*/0, body.JointOrientations[jt].Orientation.W);
+                            //dress.transform.rotation = rotation;
+                            //torso.transform.position = position;
+                            //float zDistance = GetVector3FromJoint(sourceJoint).z * (float)5.5;
+                            //float scale = (float)22;
+                            //dress.transform.localScale = new Vector3(scale - zDistance, scale - zDistance, scale - zDistance);
                         }
                     }
                 }
