@@ -3,7 +3,6 @@ class KalmanFilterSimple1D
 {
     public double X0 { get; private set; } // predicted state
     public double P0 { get; private set; } // predicted covariance
-
     public double F { get; private set; } // factor of real value to previous real value
     public double Q { get; private set; } // measurement noise
     public double H { get; private set; } // factor of measured value to real value
@@ -19,7 +18,6 @@ class KalmanFilterSimple1D
         F = f;
         H = h;
     }
-
     public void SetState(double state, double covariance)
     {
         State = state;

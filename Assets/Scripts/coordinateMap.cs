@@ -79,21 +79,22 @@ public class coordinateMap : MonoBehaviour
         }
         //If the body data is null, stop
         data = bodyManager.GetData();
+        
         if (data == null)
         {
             print("Body Data is Null");
             return;
         }
         //For each body that exists
-        foreach (var body in data)
-        {
-            //If body == null, don't do any more code, just iterate the loop
-            if (body == null)
-            {
-                //Stop here and iterate the loop again
-                continue;
-            }
-        }
+        // foreach (var body in data)
+        // {
+        //     //If body == null, don't do any more code, just iterate the loop
+        //     if (body == null)
+        //     {
+        //         //Stop here and iterate the loop again
+        //         continue;
+        //     }
+        // }
         //Iterate over each body in our array
         foreach (var body in data)
         {
@@ -142,7 +143,6 @@ public class coordinateMap : MonoBehaviour
                 }
             }
         }
-
     }
     private static Vector3 GetVector3FromJoint(Kinect.Joint joint)
     {

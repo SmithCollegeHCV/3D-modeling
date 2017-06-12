@@ -34,16 +34,13 @@ public class FaceToCam : MonoBehaviour
     public float headSmooth;
 
     private float last_x = 0;
-    private float[] last;
-    private float last_x3 = 0;
-
+  
     private float last_y = 0;
 
     private float last_mod = 0;
 
 
     private int updateFrame;
-
     KalmanFilterSimple1D kalman_X;
     KalmanFilterSimple1D kalman_Y;
     KalmanFilterSimple1D kalman_mod;

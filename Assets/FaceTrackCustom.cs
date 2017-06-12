@@ -34,7 +34,6 @@ public class FaceTrackCustom : MonoBehaviour
             if (bodyFrame != null)
             {
                 bodyFrame.GetAndRefreshBodyData(bodies);
-
                 // iterate through each body and update face source
                 for (int i = 0; i < bodyCount; i++)
                 {
@@ -69,7 +68,6 @@ public class FaceTrackCustom : MonoBehaviour
                 }
             }
         }
-
 
     }
     private void initKinect()
