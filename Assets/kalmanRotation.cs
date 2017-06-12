@@ -6,8 +6,21 @@ using Kinect = Windows.Kinect;
 using Microsoft.Kinect.Face;
 public class kalmanRotation : MonoBehaviour
 {
-    //Import BodySourceManager class 
+	//Kalman Stuff
+	private bool updateFrame;
+    KalmanFilterSimple1D kalman_X;
+    KalmanFilterSimple1D kalman_Y;
+    KalmanFilterSimple1D kalman_mod;
+    public float qq;
+    public float rr;
+    public float init_state;
+    public float smoothFactor; //Smoother is slower
+    private float last_x;
+    private float last_y;
+    private float last_mod;
+    
 
+    //Import BodySourceManager class 
     private BodySourceManager bodyManager;
     //Unity requires instance of script in-game to use it
     private GameObject BodySourceManager;
